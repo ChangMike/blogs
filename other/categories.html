@@ -1,0 +1,37 @@
+---
+layout: default
+header: Posts By Category
+---
+<div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+        	<h5>索引</h5>
+      		<ul class="nav sidenav">
+				{% for category in site.categories %} 
+					<li><a href="#{{ category[0] }}-ref">
+						{{ category[0] | join: "/" }} <span style="color: #999999;" >({{ category[1].size }})</span>
+					</a></li>
+				{% endfor %}
+          	</ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+          <div class="home">
+			<h4>&nbsp;</h4>
+          	{% for category in site.categories %}
+			  <ul>
+			    {% assign pages_list = category[1] %}  
+			    {% include LessOrMore/pages_list %}
+			  </ul>
+			{% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
